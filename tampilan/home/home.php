@@ -12,10 +12,15 @@
 
 	$uang   = mysqli_fetch_assoc($saldo);
 
-	$format = number_format($uang["saldo"], 0, ",", ".");
+	if (mysqli_num_rows($saldo) === 1) {
+		$format = number_format($uang["saldo"], 0, ",", ".");
+	}else{
+		$format = 0;
+	}
+
+	
 
 	$date   = date('d-m-Y');
-	// echo $date;
  ?>
 
 <!-- BG -->
@@ -42,8 +47,8 @@
 
 
 <?php include '../navbar/nav.php'; ?>
-	<div class="bg-dark rounded mt-4 container text-light border border-2 pt-3 pb-3">	
-		<h3 style="font-family: Comic Sans Ms">Rp. <?php echo $format ?></h3>
+	<div class="bg-info rounded mt-4 container text-light border border-2 pt-3 pb-3">	
+		<h3 style="font-family: sans-serif;">Rp. <?php echo $format ?></h3>
 		Isi Saldo
 		<form id="main" action="../../route/web.php" method="post">
 			<h3>Saldo : </h3>

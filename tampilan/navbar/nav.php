@@ -14,9 +14,9 @@
               $nama = mysqli_fetch_assoc($data); ?>
 
             <?php if ($nama["gambar"] == null){ ?>
-              <img src="<?php echo $nama ["avatar"] ?>" class="mt-3 mb-2 border border-2 pp-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown" >
+              <img src="<?php echo $nama ["avatar"] ?>" class="mt-3 mb-2 border border-2 BOX" type="button" aria-expanded="false" id="dropdown" style="height: 50px; width: 50px; border-radius: 100%;" >
             <?php }else{ ?>
-              <img src="<?php echo "../../source/".$nama["gambar"]; ?>" class="mt-3 mb-2 border border-2 pp-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown" style="height: 50px; width: 50px;" >
+              <img src="<?php echo "../../source/".$nama["gambar"]; ?>" class="mt-3 mb-2 border border-2 BOX" type="button" id="dropdown" aria-expanded="false" style="height: 50px; width: 50px; border-radius: 100%;" >
             <?php } ?>
             <ul class="dropdown-menu" id="menu-dropdown" aria-labelledby="dropdownMenuButton1">
 
@@ -25,11 +25,11 @@
               <center>
                 
                 <?php if ($nama["gambar"] == null){ ?>
-                <img src="<?php echo $nama ["avatar"] ?>" class="mt-3 mb-2 border border-2 pp-2">
+                <img src="<?php echo $nama ["avatar"] ?>" class="mt-3 mb-2 border border-2" style="height: 150px; width: 150px; border-radius: 100%;">
                 
                 <!-- Bila gambar ada -->
                 <?php }else{ ?> 
-                <img src="<?php echo "../../source/".$nama["gambar"]; ?>" class="mt-3 mb-2 border border-2 pp-2">
+                <img src="<?php echo "../../source/".$nama["gambar"]; ?>" class="mt-3 mb-2 border border-2"  style="height: 150px; width: 150px; border-radius: 100%;">
                 <?php } ?>
 
               </center>
@@ -98,6 +98,15 @@
 </script>
 
 
+<script>
+  $(document).ready(function(){
+    $('dropdown').click(function(){
+      $('.BOX').fadeToggle();
+    });
+  });
+</script>
+
+
 <style type="text/css">
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -112,5 +121,4 @@ input[type=number] {
 }
 </style>  
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+  <script src="../../../public/Bootstrap/js/bootstrap.bundle.min.js"></script>
