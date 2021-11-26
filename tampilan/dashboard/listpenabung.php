@@ -8,6 +8,8 @@
 	$coba = mysqli_query($koneksi, "SELECT * FROM kelas ");
 
 	$row  = mysqli_fetch_assoc($coba);
+
+	$no= 1;
  ?>
  
 <body>
@@ -16,6 +18,7 @@
 		<table class="table">
 			<thead>
 				<tr>
+					<th>no</th>
 					<th>Nama</th>
 					<th>Nis</th>
 					<th>Pesan</th>
@@ -28,6 +31,7 @@
 			<tbody>
 				<?php foreach($list as $key ): ?>
 					<tr>
+						<td><?php echo $no++ ?></td>
 						<td><?php echo $key["nama"]; ?></td>
 						<td><?php echo $key["nis"] ?></td>
 						<td>
@@ -38,7 +42,7 @@
 						<td>Rp <?php echo number_format($key["uang"], 0,".","."); ?></td>
 						<td>
 							<form action="../../route/web.php" method="post">
-						    	<button class="btn btn-dark border border-2 border-danger text-danger" type="submit" value="<?php echo $key["id_konfirmasi"]; ?>" name="tambahsaldo">Konfirmasi</button>
+						    	<button class="btn btn-outline-dark" type="submit" value="<?php echo $key["id_konfirmasi"]; ?>" name="tambahsaldo">Konfirmasi</button>
 						    </form>
 						</td>
 					</tr>

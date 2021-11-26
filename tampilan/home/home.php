@@ -10,17 +10,17 @@
 
 	$saldo  = mysqli_query($koneksi, "SELECT * FROM saldo WHERE id_user = $auth");
 
-	$uang   = mysqli_fetch_assoc($saldo);
-
 	if (mysqli_num_rows($saldo) === 1) {
+		$uang   = mysqli_fetch_assoc($saldo);
+
 		$format = number_format($uang["saldo"], 0, ",", ".");
 	}else{
 		$format = 0;
 	}
-
 	
+	$top = mysqli_query($koneksi, "SELECT * FROM saldo INNER JOIN register ON saldo.id_user = register.id_user INNER JOIN gender on register.id_gender = gender.id_gender WHERE register.id_role = 2 ORDER BY saldo DESC LIMIT 3");
+	$no=1;
 
-	$date   = date('d-m-Y');
  ?>
 
 <!-- BG -->
@@ -38,17 +38,42 @@
 	      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
 	    </div>
 	    <div class="toast-body">
-	      Saldo berhasil ditambahkan,
 	      Permintaan sedang dalam antrian.
 	      <a href="#" id="detail-toast">detail</a>
 	    </div>
 	  </div>
 	</div>
 
-
 <?php include '../navbar/nav.php'; ?>
-	<div class="bg-info rounded mt-4 container text-light border border-2 pt-3 pb-3">	
-		<h3 style="font-family: sans-serif;">Rp. <?php echo $format ?></h3>
+
+<div class="container">
+	<div class="row">
+		<?php foreach ($top as $key ): ?>
+			<?php if ($key["gambar"] == null){ ?>
+				<div class="col-4 d-flex justify-content-center">
+					<h5>No. <?php echo $no++ ?></h5>
+					<img src="<?php echo $key["avatar"] ?>" class="rounded-circle" style="max-width: 100px; height:100px">
+					<div class="row">
+						<h3><?php echo $key["nama"] ?></h3>
+						<h3>Rp <?php echo number_format($key["saldo"], 0, ".", "."); ?></h3>
+					</div>
+				</div>
+			<?php }else{ ?>
+				<div class="col-4 d-flex justify-content-center">
+					<h5>No. <?php echo $no++ ?></h5>
+					<img src="<?php echo "../../source/".$key["gambar"] ?>"  class=" rounded-circle" style="max-width: 100px; height:100px">
+					<div class="row">
+						<h3><?php echo $key["nama"] ?></h3>
+						<h3>Rp <?php echo number_format($key["saldo"], 0, ".", "."); ?></h3>
+					</div>
+				</div>
+			<?php } ?>
+			
+		<?php endforeach ?>
+	</div>
+</div>
+	<div class="bg-dark rounded mt-4 container text-light border border-2 pt-3 pb-3">	
+		<h3 style="font-family: Comic Sans Ms">Rp. <?php echo $format ?></h3>
 		Isi Saldo
 		<form id="main" action="../../route/web.php" method="post">
 			<h3>Saldo : </h3>
@@ -57,12 +82,11 @@
 			<textarea class="form-control " name="pesan" required>
 			</textarea>
 			<center>
-				<button type="submit" class="mt-2 btn btn-outline-light" name="nabung" id="ya" value="
+				<button type="submit" class="mt-2 btn btn-outline-light" name="nabung" value="
 				<?php echo $auth; ?>">Kirim</button>
 				<!-- Toast Show -->
 					<?php if ('$auth'){ ?>
-						<script type="text/javascript">$('#ya').on('click',function(e){
-							e.preventDefault()
+						<script type="text/javascript">$('#ya').on('click',function(){
 							  $('#liveToast').toast('show');
 							  $('#main')[0].reset()
 							})

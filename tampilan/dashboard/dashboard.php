@@ -2,6 +2,7 @@
 	session_start();
 	include '../../db.php';
 	include '../../auth/adminSession.php';
+	include '../../public/head/head.php';
 
 	$siswa = mysqli_query($koneksi, "SELECT * FROM register INNER JOIN kelas ON register.id_kelas = kelas.id_kelas INNER JOIN gender ON register.id_gender = gender.id_gender WHERE register.id_role = 2 ");
 
@@ -18,46 +19,65 @@
 	$rupiah= number_format($row["uang"], 0, ",", ".");
 
  ?>
-<body style="background: linear-gradient(to right,#043927,#078d5f, #043927);">
-	<?php include '../navbar/nav.php'; ?>
-	<div class="container border border-2 border-light mt-4 pt-2 pb-3 rounded" style="background: linear-gradient(to right,#043927,#078d5f, #043927);">
-			<div class="row mt-3">
-				<div class="col-4">
-					<div class="card border border-2 border-light pt-2 pb-2 text-light" style="background: linear-gradient(to right,#043927,#078d5f, #043927); width:18rem;" >
-					  <!-- <img src="../../source/gambar.jpg" class="card-img-top rounded" alt="..." style="max-height: 300px;"> -->
-					  <div class="card-body" >
-					    <h5 class="card-title text-center">Murid</h5>
-					    <h3 class="card-text text-center"><?php echo $total ?></h3>
-					    <center>
-					    <a href="datasiswa.php" class="btn btn-outline-light">Lihat</a>
-					    </center>
-					  </div>
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="card border border-2 border-light pt-2 pb-2 text-light" style="background: linear-gradient(to right,#043927,#078d5f, #043927); width:18rem; margin-left: 40px;" >
-					  <!-- <img src="../../source/gambar.jpg" class="card-img-top rounded" alt="..." style="max-height: 300px;"> -->
-					  <div class="card-body" >
-					    <h5 class="card-title text-center">Saldo</h5>
-					    <h3 class="card-text text-center">Rp. <?php echo $rupiah ?></h3>
-					    <center>
-					    <a href="datasaldo.php" class="btn btn-outline-light">Lihat</a>
-					    </center>
-					  </div>
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="card border border-2 border-light pt-2 pb-2 text-light" style="background: linear-gradient(to right,#043927,#078d5f, #043927); width:18rem; margin-left:67px" >
-					  <!-- <img src="../../source/gambar.jpg" class="card-img-top rounded" alt="..." style="max-height: 300px;"> -->
-					  <div class="card-body" >
-					    <h5 class="card-title text-center">Penabung Hari Ini</h5>
-					    <h3 class="card-text text-center"><?php echo $ttl_penabung; ?></h3>
-					    <center>
-					    <a href="listpenabung.php" class="btn btn-outline-light">Lihat</a>
-					    </center>
-					  </div>
-					</div>
-				</div>
-			</div>
-	</div>
-</body>
+
+<body>
+  <?php include '../navbar/nav.php' ?>
+        <div class="d-flex" id="wrapper">
+            <div id="page-content-wrapper">
+                <div class="container-fluid py-4">
+                  <div class="row">
+                    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+                      <div class="card">
+                        <div class="card-header p-3 pt-2">
+                          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                            <i class="fa-solid fa-circle-user"></i>
+                          </div>
+                          <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">murid</p>
+                            <h4 class="mb-0"><?php echo $total ?></h4>
+                          </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                          <a href="datasiswa.php" class="mb-0 text-dark fw-bold" style="text-decoration: none;"><span class="text-success text-sm font-weight-bolder"></span>selengkapnya</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+                      <div class="card">
+                        <div class="card-header p-3 pt-2">
+                          <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                            <i class="material-icons opacity-10">person</i>
+                          </div>
+                          <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">saldo</p>
+                            <h4 class="mb-0">Rp. <?php echo $rupiah ?></h4>
+                          </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                          <a href="datasaldo.php" class="mb-0 text-dark fw-bold" style="text-decoration: none;"><span class="text-success text-sm font-weight-bolder"></span>selengkapnya</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+                      <div class="card">
+                        <div class="card-header p-3 pt-2">
+                          <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                            <i class="material-icons opacity-10">person</i>
+                          </div>
+                          <div class="text-end pt-1">
+                            <p class="text-sm mb-0 text-capitalize">penabung hari ini</p>
+                            <h4 class="mb-0"><?php echo $ttl_penabung; ?></h4>
+                          </div>
+                        </div>
+                        <hr class="dark horizontal my-0">
+                        <div class="card-footer p-3">
+                          <a href="listpenabung.php" class="mb-0 text-dark fw-bold" style="text-decoration: none;"><span class="text-danger text-sm font-weight-bolder"></span>selengkapnya</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </body>

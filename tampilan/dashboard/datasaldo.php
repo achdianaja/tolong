@@ -2,6 +2,7 @@
 session_start();
 	include '../../db.php';
 	include '../../auth/adminSession.php';
+	
 
 
 $dataSaldo = mysqli_query($koneksi, "SELECT * FROM saldo INNER JOIN register ON saldo.id_user = register.id_user WHERE register.id_role = 2");
@@ -9,7 +10,7 @@ $no=1;
  ?>
  <body>
  	<?php include '../navbar/nav.php'; ?>
- 			<table class="table container mt-3 table-dark table-striped ">
+ 			<table class="table container-fluid ">
 			  <thead>
 			    <tr>
 			      <th scope="col">No</th>
@@ -29,7 +30,7 @@ $no=1;
 				      <td>
 				      	<center>
 				      		<form action="tarik.php" method="post">
-				      			<button class="btn btn-outline-light" value="<?php echo $key["id_user"]; ?>" name="id">Tarik</button>
+				      			<button class="btn btn-outline-dark" value="<?php echo $key["id_user"]; ?>" name="id">Tarik</button>
 				      		</form>
 				      	</center>
 				      </td>

@@ -2,6 +2,7 @@
 	session_start();
 	include '../../db.php';
 	include '../../auth/adminSession.php';
+	include '../../public/head/head.php';
 
 	$id = $_POST['id'];
 
@@ -14,13 +15,24 @@
 	$saldo 	   = mysqli_fetch_assoc($dataSaldo);
  ?>
 
-<h3>Saldo <?php echo $row["nama"]; ?> Sekarang</h3>
-<h3>Rp.
+
+<div class="card text-center container-sm mt-5">
+  <div class="card-header">
+   Saldo <?php echo $row["nama"]; ?>
+  </div>
+  <div class="card-body">
+  	<br>
+    <h5 class="card-title">Saldo saat ini</h5>
+    <p class="card-text">Rp.
 	<?php $uang = number_format($saldo["saldo"], 0, ",", ".");
-	echo $uang; ?>		
-</h3>
-<form action="../../route/web.php" method="post">
-	<h4>Masukan Jumlah Saldo yang ingin di tarik :</h4>
-	<input type="number" name="saldo">
-	<button class="btn" value="<?php echo $id; ?>" name="tariksaldo">Konfirmasi</button>
-</form>
+	echo $uang; ?></p>
+	<br>
+    
+    <form action="../../route/web.php" method="post">
+    	
+		<input type="number" name="saldo" class="form-control" placeholder="Masukan Nominal">
+		<button class="btn btn-outline-dark" value="<?php echo $id; ?>" name="tariksaldo">Konfirmasi</button>
+ 	</form>
+  </div>
+</div>
+
