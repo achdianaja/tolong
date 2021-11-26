@@ -19,7 +19,7 @@
 	$rupiah= number_format($row["uang"], 0, ",", ".");
 
  ?>
-
+ <link rel="stylesheet" type="text/css" href="../../public/fontawesome/css/all.css">
 <body>
   <?php include '../navbar/nav.php' ?>
         <div class="d-flex" id="wrapper">
@@ -30,7 +30,7 @@
                       <div class="card">
                         <div class="card-header p-3 pt-2">
                           <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="fa-solid fa-circle-user"></i>
+                            <img src="../../source/svg/user-graduate-solid.svg" style="width: 55px;">
                           </div>
                           <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">murid</p>
@@ -38,16 +38,16 @@
                           </div>
                         </div>
                         <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                          <a href="datasiswa.php" class="mb-0 text-dark fw-bold" style="text-decoration: none;"><span class="text-success text-sm font-weight-bolder"></span>selengkapnya</a>
-                        </div>
+                          <div class="card-footer p-3 btn btn-light" onclick="window.location.href = 'datasiswa.php';">
+                            <span class="text-success text-sm font-weight-bolder"></span>Selengkapnya
+                          </div>
                       </div>
                     </div>
                     <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
                       <div class="card">
                         <div class="card-header p-3 pt-2">
                           <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">person</i>
+                            <img src="../../source/svg/users-solid.svg" style="width: 85px;">
                           </div>
                           <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">saldo</p>
@@ -55,16 +55,16 @@
                           </div>
                         </div>
                         <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                          <a href="datasaldo.php" class="mb-0 text-dark fw-bold" style="text-decoration: none;"><span class="text-success text-sm font-weight-bolder"></span>selengkapnya</a>
-                        </div>
+                          <div class="card-footer p-3 btn btn-light" onclick="window.location.href = 'datasaldo.php';">
+                              <span class="text-success text-sm font-weight-bolder"></span>Selengkapnya
+                          </div>
                       </div>
                     </div>
                     <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
                       <div class="card">
                         <div class="card-header p-3 pt-2">
                           <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">person</i>
+                            <img src="../../source/svg/piggy-bank-solid.svg" style="width: 72px;">
                           </div>
                           <div class="text-end pt-1">
                             <p class="text-sm mb-0 text-capitalize">penabung hari ini</p>
@@ -72,8 +72,9 @@
                           </div>
                         </div>
                         <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                          <a href="listpenabung.php" class="mb-0 text-dark fw-bold" style="text-decoration: none;"><span class="text-danger text-sm font-weight-bolder"></span>selengkapnya</a>
+                          <div class="card-footer p-3 btn btn-light" onclick="window.location.href = 'listpenabung.php';">
+                            <span class="text-success text-sm font-weight-bolder"></span>Selengkapnya
+                          </div>
                         </div>
                       </div>
                     </div>

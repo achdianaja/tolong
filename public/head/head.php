@@ -3,7 +3,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	
 	<!-- Font Awesome-->
-	<!-- <link rel="stylesheet" type="text/css" href="../../public/fontawesome-free-5.15.4-web/css/all.css" > -->
+	<link rel="stylesheet" type="text/css" href="../fontawesome/css/all.css" >
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="../../public/Bootstrap/css/bootstrap.min.css">
